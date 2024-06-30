@@ -32,7 +32,7 @@ number_of_classes = 2
 ```
 
 ### Masking
-Masking function 𝓖 bears is a key factor in the MaskTune method. It identifies and masks the most discriminative features in the sample found by the fully trained model, thus it is applied offline. This will encourage the model to explore more features during the fine-tuning.
+Masking function 𝓖 is a key factor in the MaskTune method. It identifies and masks the most discriminative features in the sample found by the fully trained model, thus it is applied offline. This will encourage the model to explore more features during the fine-tuning.
 
 
 $𝓖:$ masking function, here xGradCAM is used.
