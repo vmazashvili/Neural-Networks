@@ -49,7 +49,7 @@ For each sample $(x_i, y_i)$, $x_i ∈X$ and $y_i∈Y$, the masking is done as f
 
 Where Τ is a thresholding function with the threshold factor τ $(i.e., Τ=𝟙_{𝓐_{x_i}≤τ})$ and ⊙ denotes element-wise multiplication.
 
-$Τ(𝓐_{x_i})$ is upsampled to match the size of the input.
+$Τ(𝓐_{x_i})$, in our case [8, 8]  is upsampled to match the size of the input [3, 28, 28].
 
 
 
