@@ -1,5 +1,5 @@
 # Neural-Networks
-Masktune Project reimplementation
+Reimplementation the method from the paper - MaskTune: Mitigating Spurious Correlations by Forcing to Explore 
 
 ## Intrdocution 
 This project is a reimplementation of MaskTune, a novel technique described in the paper MaskTune: Mitigating Spurious Correlations by Forcing to Explore. This single-epoch finetuning technique addresses the challenge of spurious correlations in over-parametrized deep learning models. Spurious correlations refer to coincidental associations between input and target variables that can lead to poor generalization performance [1]. It forces the model to explore other train variables by concealing the first explored ones, causing the training to ditch its myopic and greedy feature-seeking character, while encouraging exploration, leveraging more input variables.
