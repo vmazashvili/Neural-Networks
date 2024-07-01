@@ -76,7 +76,8 @@ In the Plotting and Visualization section, we can modify the `base_model` and `f
 ![accuracies](https://github.com/vmazashvili/Neural-Networks/assets/36914777/c18242fc-efc8-4111-9d0d-d03e4086a7a1)
 From this plot, It is visible that MaskTune is a viable method, able to boost performance significantly. However, the parameters and the masking methods should be right. In our case, Threshold methods with moderately high parameters and top_k methods with small and moderate parameter values performed the best. Mean masking with param=0.9 performed well on the biased set, but poorly on the raw test set. Overall the best performer was top_k_0.1 on both, biased and raw test sets. 
 Here are the saliency maps for the worst performing model: Mean masking with 0.1 threshold:
-![image](https://github.com/vmazashvili/Neural-Networks/assets/36914777/ecdd46b1-75f1-42e9-a8a6-f845f498512c)
+![image](https://github.com/vmazashvili/Neural-Networks/assets/36914777/acc2b72b-41bc-4daf-abbe-0cec219dcebf)
+
 While it masks the spurious features, the model fails to classify non-spurious samples
 
 And the best performing one: top_k_0.1
