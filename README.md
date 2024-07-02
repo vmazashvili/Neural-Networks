@@ -18,7 +18,7 @@ The pipeline for the project is as follows:
 The appropriate dataset is created from MNIST to illustrate the effectiveness of the technique further. At first, we distinguish between two MNIST digit groups (0-4 and 5-9). Those groups are remapped into class 0 and class 1 respectively. We induce a spurious feature (blue square in the top left corner) to 99% of samples in newly acquired class 0 and 1% of the samples of the new class 1. 
 As for testing, raw and modified, biased test sets are used (both of them remapped as well). The modified test set has a spurious feature for only class one.
 ### The Neural Network
-This project uses the same Convolutional Neural Network as the project. One feature of the `SmallCNN` class is a get_grad_cam_target_layer function which will grab the last convolutional layer and use it for the saliency map generation. 
+This project uses the same Convolutional Neural Network as the architecture. One feature of the `SmallCNN` class is a get_grad_cam_target_layer function which will grab the last convolutional layer and use it for the saliency map generation. 
 The hyperparameters are the same as suggested by the authors:
 ```
 lr = 0.01
