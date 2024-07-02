@@ -32,7 +32,7 @@ number_of_classes = 2
 ```
 
 ### Masking
-Masking function 𝓖 is a key factor in the MaskTune method. It identifies and masks the most discriminative features in the sample found by the fully trained model, thus it is applied offline. This will encourage the model to explore more features during the fine-tuning.
+The masking function 𝓖 is a key factor in the MaskTune method. It identifies and masks the most discriminative features in the sample found by the fully trained model, thus it is applied offline. This will encourage the model to explore more features during the fine-tuning.
 
 
 $𝓖:$ masking function, here xGradCAM is used.
@@ -60,7 +60,7 @@ $Τ(𝓐_{x_i})$, in our case [8, 8]  is upsampled to match the size of the inpu
 2.   Create masked set $𝓓^{masked}$ using $m_θ^{initial}$, $𝓖$ and $Τ$
 3.  $m_θ^{initial}$ is tuned using $𝓓^{masked}$ to obtain $m_θ^{final}$
 
-This project experiments with 3 different masking methods, all of them leverage the saliency maps. 
+This project experiments with 3 different masking methods, all of which leverage the saliency maps. 
 1. "threshold" method - generates a mask based on a user-defined threshold value; masking the regions where the saliency map has greater values than the threshold.
 2. "top_k" - creates a mask based on the user-defined threshold k. It masks the k percentile most activated pixels.
 3. "Mean" masking - The mask is created based on a scaled value of the calculated mean of the saliency map. 
@@ -68,13 +68,13 @@ This project experiments with 3 different masking methods, all of them leverage 
 ### Training and Finetuning 
 First, we get the checkpoint for the ERM model, using the cross-entropy loss function and stochastic gradient descent optimizer. The training is done for 50 epochs (Due to limited resources) The learning rate decays after every number of specified epochs. The final learning rate value from ERM training is used as a finetuning hyperparameter later on. 
 The models with the different masking methods and parameters are finetuned in the Masking and Finetuning section, where we can define the desired configuration with `method` and `param` variables. Finetuning models one by one enables us to save and load many checkpoints without RAM bottlenecking, to plot the method's effectiveness. 
-The fine-tuned model checkpoints are then saved with the appropriate namings, which are later leveraged to plot out their performances 
+The fine-tuned model checkpoints are then saved with the appropriate namings, which are later leveraged to plot out their performances. 
 Each model is tested on raw and biased test datasets. 
 ## Results
 In the Plotting and Visualization section, we can modify the `base_model` and `finetuned_model` variables to output the saliency maps and masks for the desired finetuned model checkpoint. 
 
 ![accuracies](https://github.com/vmazashvili/Neural-Networks/assets/36914777/c18242fc-efc8-4111-9d0d-d03e4086a7a1)
-From this plot, It is visible that MaskTune is a viable method, able to boost performance significantly. However, the parameters and the masking methods should be right. In our case, Threshold methods with moderately high parameters and top_k methods with small and moderate parameter values performed the best. Mean masking with param=0.9 performed well on the biased set, but poorly on the raw test set. Overall the best performer was top_k_0.1 on both, biased and raw test sets. 
+From this plot, It is visible that MaskTune is a viable method, able to boost performance significantly. However, the parameters and the masking techniques should be selected appropriately. In our case, Threshold methods with moderately high parameters and top_k methods with small and moderate parameter values performed the best. Mean masking with param=0.9 performed well on the biased set, but poorly on the raw test set. Overall the best performer was top_k_0.1 on both, biased and raw test sets. 
 Here are the saliency maps for the worst performing model: Mean masking with 0.1 threshold:
 ![image](https://github.com/vmazashvili/Neural-Networks/assets/36914777/acc2b72b-41bc-4daf-abbe-0cec219dcebf)
 
